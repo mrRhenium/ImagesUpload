@@ -29,6 +29,7 @@
         try {
           //
 
+          // data send to main Server
           const data = await fetch("http://localhost:3000/upload", {
             method: "post",
             headers: {
@@ -44,6 +45,19 @@
 
           console.log(data);
 
+          // images send to Media Server
+
+          const imagesData = await fetch("http://localhost:8000/images", {
+            method: "post",
+            headers: {
+              "content-Type": "application/json",
+            },
+            body: JSON.stringify({ message: "hello" }),
+          });
+
+          console.log(imagesData);
+
+          alert("Data Successfully Send to the Server");
           //
         } catch (err) {
           console.log(err);
