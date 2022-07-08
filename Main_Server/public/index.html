@@ -15,7 +15,7 @@
       <input type="text" name="Answer" id="answer" />
       <br />
       <br />
-      <input type="file" name="file" id="file" />
+      <input type="file" name="images" id="file" />
     </form>
     <br />
     <button id="save">Save</button>
@@ -47,12 +47,13 @@
 
           // images send to Media Server
 
-          const imagesData = await fetch("http://localhost:8000/images", {
+          const formData = new FormData();
+          formData.append("name", "nitesh");
+          formData.append("niteshimages", file.files[0]);
+
+          const imagesData = await fetch("http://localhost:8000/media", {
             method: "post",
-            headers: {
-              "content-Type": "application/json",
-            },
-            body: JSON.stringify({ message: "hello" }),
+            body: formData,
           });
 
           console.log(imagesData);
