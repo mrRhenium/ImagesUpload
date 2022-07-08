@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 
 // import the functions
 const corsProtection = require("./Protection/corsOption");
+const upload = require("./mediaUpload/multer");
 
 // declare the variables
 const app = express();
@@ -25,7 +26,7 @@ app.get("/", (req, res) => {
   res.send("media Server");
 });
 
-app.post("/images", (req, res) => {
+app.post("/media", upload.single("niteshimages"), (req, res) => {
   console.log(req.body);
   res.json(req.body);
 });
