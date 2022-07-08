@@ -41,7 +41,7 @@ app.use(corsProtection);
 // **********************************
 
 app.get("/", async (req, res) => {
-  res.send("Hello World!");
+  res.send("main Server");
 });
 
 app.post("/upload", async (req, res) => {
