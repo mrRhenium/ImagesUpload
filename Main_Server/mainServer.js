@@ -44,6 +44,25 @@ app.get("/", async (req, res) => {
   res.send("main Server");
 });
 
+app.get("/upload", async (req, res) => {
+  try {
+    //
+
+    const data = await Question.find({});
+
+    if (data.length) {
+      res.json(data);
+    } //
+    else {
+      res.json({ message: "Database is empty" });
+    }
+
+    //
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.post("/upload", async (req, res) => {
   console.log(req.body);
 

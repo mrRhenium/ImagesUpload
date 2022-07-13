@@ -7,9 +7,12 @@ file.addEventListener("change", () => {
 // ***********************
 // upload function define here
 // ***********************
-const upload = async () => {
+const upload = async (e) => {
   try {
     //
+
+    e.preventDefault();
+
     let q_id = Date.now();
     console.log(q_id);
 

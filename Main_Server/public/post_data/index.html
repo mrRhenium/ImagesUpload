@@ -16,20 +16,32 @@
     <!--  -->
 
     <div class="container">
+      <!-- container items start -->
+
       <!-- heading of the web page -->
       <h1>Quesions Upload with Images</h1>
-      <!--  -->
 
       <!-- form code start here -->
       <form class="form">
         <label for="question">Quesions</label>
-        <input type="text" name="Question" id="question" />
+        <input type="text" name="Question" id="question" required />
+
         <label for="answer">Answer</label>
-        <input type="text" name="Answer" id="answer" />
-        <input type="file" name="images" id="file" />
+        <input type="text" name="Answer" id="answer" required />
+
+        <input type="file" name="images" id="file" required />
+
+        <button id="save" style="padding: 0 1rem; cursor: pointer">
+          Upload
+        </button>
       </form>
-      <button id="save" style="padding: 0 1rem; cursor: pointer">Upload</button>
       <!-- form code end here -->
+
+      <!-- anchor code start-->
+      <a href="../get_data/display_data.html"> View Quesions</a>
+      <!--  anchor code end-->
+
+      <!-- container items end -->
     </div>
 
     <!-- script file  -->

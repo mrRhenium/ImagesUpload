@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- title of Web page -->
+    <title>Quesions</title>
+
+    <!-- styling link add here -->
+    <link rel="stylesheet" href="display_data.css" />
+  </head>
+  <body>
+    <!--  -->
+
+    <div class="container">
+      <!-- container items code start -->
+
+      <!-- heading of the webpage -->
+      <h1>Get Data with Images</h1>
+
+      <!-- button code start-->
+      <div class="btn_cover">
+        <button id="get_data" style="padding: 0 1rem; cursor: pointer">
+          Fetch Data
+        </button>
+      </div>
+      <!--  button code end-->
+
+      <!-- question start -->
+      <div class="question_cover">
+        <!-- <div class="items">
+          <span class="ques">${items.question}</span>
+          <span class="ans">${items.answer}</span>
+          <span class="img">
+            <img
+              src="http://localhost:8000/images/1657722600390/htmlicon.jpg"
+              alt=""
+            /> 
+          </span> 
+        </div>-->
+      </div>
+      <!-- question div end -->
+
+      <a href="../post_data/index.html"> Upload Quesions</a>
+
+      <!-- container items code end -->
+    </div>
+
+    <!--  -->
+
+    <script>
+      const getBtn = document.querySelector("#get_data");
+      const cover = document.querySelector(".question_cover");
+
+      const fetchData = async () => {
+        try {
+          //
+
+          const data = await fetch("http://localhost:3000/upload");
+
+          const result = await data.json();
+          console.log("Result", result);
+
+          if (result.length) {
+            result.forEach((items) => {
+              cover.innerHTML += `
+              <div class="items">
+                <span class="ques">${items.question}</span>
+                <span class="ans">${items.answer}</span>
+                <span class="img">
+                  <img src="${items.imageSrc}" alt="${items.q_id}" />
+                </span>
+              </div>`;
+            });
+          }
+          //
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      getBtn.addEventListener("click", fetchData);
+    </script>
+  </body>
+</html>
