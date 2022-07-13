@@ -13,7 +13,7 @@ const QuestionScema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  imageUrl: {
+  imageSrc: {
     type: String,
   },
 });

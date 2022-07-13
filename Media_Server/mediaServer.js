@@ -19,6 +19,9 @@ app.use(bodyParser.json());
 //cors protection
 app.use(corsProtection);
 
+// server static files to the client
+app.use(express.static("public"));
+
 // *****************************
 // routes start here
 // *****************************
@@ -26,14 +29,15 @@ app.get("/", (req, res) => {
   res.send("media Server");
 });
 
-app.post("/media", upload.single("niteshimages"), (req, res) => {
+app.post("/media", upload.single("imageFile"), (req, res) => {
   console.log(req.body);
-  res.json(req.body);
+  res.json("Seccesfully uploaded");
 });
 
 // *****************************
 // listen the port
 // *****************************
 app.listen(port, () => {
-  console.log(`Media Server listening on port no ${port}`);
+  console.log(`Media Server running at`);
+  console.log(`http://localhost:${port}/`);
 });

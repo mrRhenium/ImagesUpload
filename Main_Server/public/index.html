@@ -1,71 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- meta description -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
+    <!-- title of web page -->
+    <title>Question Submition</title>
+
+    <!-- sytle page -->
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <!-- form code start here -->
-    <form>
-      <input type="text" name="Question" id="question" />
-      <br />
-      <br />
-      <input type="text" name="Answer" id="answer" />
-      <br />
-      <br />
-      <input type="file" name="images" id="file" />
-    </form>
-    <br />
-    <button id="save">Save</button>
+    <!--  -->
 
-    <!-- script file -->
-    <script>
-      const q_id = new Date().toISOString().substr(0, 13);
-      console.log(q_id);
+    <div class="container">
+      <!-- heading of the web page -->
+      <h1>Quesions Upload with Images</h1>
+      <!--  -->
 
-      const upload = async () => {
-        try {
-          //
+      <!-- form code start here -->
+      <form class="form">
+        <label for="question">Quesions</label>
+        <input type="text" name="Question" id="question" />
+        <label for="answer">Answer</label>
+        <input type="text" name="Answer" id="answer" />
+        <input type="file" name="images" id="file" />
+      </form>
+      <button id="save" style="padding: 0 1rem; cursor: pointer">Upload</button>
+      <!-- form code end here -->
+    </div>
 
-          // data send to main Server
-          const data = await fetch("http://localhost:3000/upload", {
-            method: "post",
-            headers: {
-              "content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              q_id: q_id,
-              question: question.value,
-              answer: answer.value,
-              imageUrl: "a",
-            }),
-          });
-
-          console.log(data);
-
-          // images send to Media Server
-
-          const formData = new FormData();
-          formData.append("name", "nitesh");
-          formData.append("niteshimages", file.files[0]);
-
-          const imagesData = await fetch("http://localhost:8000/media", {
-            method: "post",
-            body: formData,
-          });
-
-          console.log(imagesData);
-
-          alert("Data Successfully Send to the Server");
-          //
-        } catch (err) {
-          console.log(err);
-        }
-      };
-
-      save.addEventListener("click", upload);
-    </script>
+    <!-- script file  -->
+    <script src="index.js"></script>
   </body>
 </html>
