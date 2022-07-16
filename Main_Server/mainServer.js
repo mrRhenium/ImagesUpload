@@ -78,6 +78,27 @@ app.post("/upload", async (req, res) => {
   }
 });
 
+app.delete("/upload/:q_id", async (req, res) => {
+  try {
+    //
+
+    let q_id = req.params.q_id;
+    console.log(q_id);
+
+    const del = await Question.deleteOne({ q_id: q_id });
+
+    res.json({ message: "Question deleted" });
+
+    //
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// **************************
+// routing ends here
+// **************************
+
 // **************************
 // server listning here
 // **************************

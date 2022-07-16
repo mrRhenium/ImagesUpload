@@ -1,6 +1,7 @@
 // import the libraries
 const express = require("express");
 const bodyParser = require("body-parser");
+const fs = require("fs/promises");
 
 // import the functions
 const corsProtection = require("./Protection/corsOption");
@@ -23,7 +24,7 @@ app.use(corsProtection);
 app.use(express.static("public"));
 
 // *****************************
-// routes start here
+// routing starts here
 // *****************************
 app.get("/", (req, res) => {
   res.send("media Server");
@@ -33,6 +34,26 @@ app.post("/media", upload.single("imageFile"), (req, res) => {
   console.log(req.body);
   res.json("Seccesfully uploaded");
 });
+
+app.delete("/media/:q_id", async (req, res) => {
+  try {
+    //
+    let q_id = req.params.q_id;
+    console.log(q_id);
+
+    await fs.rm(`public/images/${q_id}`, { recursive: true });
+
+    res.json({ message: "images deleted" });
+
+    //
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// *****************************
+// routing ends here
+// *****************************
 
 // *****************************
 // listen the port

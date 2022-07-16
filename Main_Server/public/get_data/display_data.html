@@ -22,9 +22,7 @@
 
       <!-- button code start-->
       <div class="btn_cover">
-        <button id="get_data" style="padding: 0 1rem; cursor: pointer">
-          Fetch Data
-        </button>
+        <button id="get_data" class="fetchButton">Get Data</button>
       </div>
       <!--  button code end-->
 
@@ -37,51 +35,24 @@
             <img
               src="http://localhost:8000/images/1657722600390/htmlicon.jpg"
               alt=""
-            /> 
-          </span> 
-        </div>-->
+            />
+          </span>
+          <span class="update">
+            <button class="delete fetchButton" data-q_id="1657722600390">
+              Delete
+            </button>
+            <button class="update fetchButton">Update</button>
+          </span>
+        </div> -->
       </div>
       <!-- question div end -->
 
       <a href="../post_data/index.html"> Upload Quesions</a>
 
-      <!-- container items code end -->
+      <!-- container's items code end -->
     </div>
 
     <!--  -->
-
-    <script>
-      const getBtn = document.querySelector("#get_data");
-      const cover = document.querySelector(".question_cover");
-
-      const fetchData = async () => {
-        try {
-          //
-
-          const data = await fetch("http://localhost:3000/upload");
-
-          const result = await data.json();
-          console.log("Result", result);
-
-          if (result.length) {
-            result.forEach((items) => {
-              cover.innerHTML += `
-              <div class="items">
-                <span class="ques">${items.question}</span>
-                <span class="ans">${items.answer}</span>
-                <span class="img">
-                  <img src="${items.imageSrc}" alt="${items.q_id}" />
-                </span>
-              </div>`;
-            });
-          }
-          //
-        } catch (err) {
-          console.log(err);
-        }
-      };
-
-      getBtn.addEventListener("click", fetchData);
-    </script>
+    <script src="display_data.js"></script>
   </body>
 </html>
