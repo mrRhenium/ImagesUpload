@@ -10,7 +10,7 @@ const corsOptionDelegate = (req, callback) => {
 
     corsOptions = {
       origin: true,
-      methods: ["GET", "DELETE"],
+      methods: ["DELETE", "PUT"],
     };
     callback(null, corsOptions);
 

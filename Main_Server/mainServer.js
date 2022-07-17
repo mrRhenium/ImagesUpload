@@ -64,7 +64,7 @@ app.get("/upload", async (req, res) => {
 });
 
 app.post("/upload", async (req, res) => {
-  console.log(req.body);
+  console.log("post", req.body.q_id);
 
   try {
     //
@@ -78,12 +78,31 @@ app.post("/upload", async (req, res) => {
   }
 });
 
+app.put("/upload", async (req, res) => {
+  console.log("put", req.body.q_id);
+
+  try {
+    //
+
+    const data = await Question.updateOne(
+      { q_id: req.body.q_id },
+      { imageSrc: req.body.imageSrc }
+    );
+
+    res.json(data);
+
+    //
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.delete("/upload/:q_id", async (req, res) => {
   try {
     //
 
     let q_id = req.params.q_id;
-    console.log(q_id);
+    console.log("delete", q_id);
 
     const del = await Question.deleteOne({ q_id: q_id });
 

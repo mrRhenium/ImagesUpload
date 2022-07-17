@@ -31,15 +31,20 @@ app.get("/", (req, res) => {
 });
 
 app.post("/media", upload.single("imageFile"), (req, res) => {
-  console.log(req.body);
+  console.log("post", req.body.q_id);
   res.json("Seccesfully uploaded");
+});
+
+app.put("/media/:q_id/:prev_img", upload.single("updated_img"), (req, res) => {
+  console.log("put", req.params.q_id);
+  res.json({ message: "image Updated" });
 });
 
 app.delete("/media/:q_id", async (req, res) => {
   try {
     //
     let q_id = req.params.q_id;
-    console.log(q_id);
+    console.log("delete", q_id);
 
     await fs.rm(`public/images/${q_id}`, { recursive: true });
 

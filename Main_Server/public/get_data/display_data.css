@@ -35,7 +35,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 80%;
-  height: 50%;
+  height: 60%;
   margin: 0.5rem;
   padding: 1rem 0;
   border: 2px solid red;
@@ -44,9 +44,13 @@
 .items .img {
   position: relative;
   display: flex;
-  width: 100px;
-  height: 100px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 150px;
+  height: 150px;
   margin: 1rem;
+  border: 1px solid red;
 }
 
 .items .img img {
@@ -58,4 +62,8 @@
   cursor: pointer;
   padding: 0 0.5rem;
   letter-spacing: 0.1rem;
+}
+
+#updatedImage {
+  transform: scale(0.8);
 }
